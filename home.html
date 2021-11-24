@@ -1,0 +1,115 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System Based on Emotion</title>
+
+
+    <!-- BootStrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+    <!-- css -->
+    <link rel="stylesheet" href="static/css/styles.css">
+<script>
+function onClickEvent(emotion){
+
+//alert(emotion);
+document.getElementById("emotion").value=emotion;
+document.getElementById("data").innerHTML ="";
+var pagebutton= document.getElementById("selfclick");
+pagebutton.click();
+}
+</script>
+
+</head>
+
+<body>
+
+    <!-- As a heading -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Movie Recommendation Based on Emotion</a>
+            </div>
+        </div>
+    </nav>
+
+    <br><br><br>
+
+
+    <div class="container">
+
+
+        <div>
+
+        <form action="\predict" method="post" >
+
+
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Select your emotion</h5>
+                            <!-- Airline -->
+                            <input name="emotion" id="emotion" value="" style="display:none"/>
+                                <img alt="Sad"  title="Sad"  src="../static/img/sad.png" style="cursor:pointer" onclick="onClickEvent('Sad'),document.body.style.backgroundColor = 'white';" width="50" height="50"/>
+                                <img alt="Fear"  title="Fear"  src="../static/img/fear.png"  style="cursor:pointer" onclick="onClickEvent('Fear'),document.body.style.backgroundColor = 'white';" width="50" height="50"/>
+                                <img alt="Trust"  title="Trust"  src="../static/img/trust.png"  style="cursor:pointer" onclick="onClickEvent('Trust'),document.body.style.backgroundColor = 'white';" width="50" height="50"/>
+                                <img alt="Enjoyment"  title="Enjoyment"  src="../static/img/enjoyment.png" style="cursor:pointer"  onclick="onClickEvent('Enjoyment'),document.body.style.backgroundColor = 'white';" width="50" height="50"/>
+                                <img alt="Anticipation"  title="Anticipation"  src="../static/img/anticipate.png"  style="cursor:pointer" onclick="onClickEvent('Anticipation'),document.body.style.backgroundColor = 'white';" width="50" height="50"/>
+
+                        </div>
+                    </div>
+                </div>
+                 <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                        <span> Selected Emotion: {{prediction_text}} </span>
+            
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Submit -->
+            <input type="submit" id="selfclick" value="Submit()" class="btn btn-secondary"  style="display:none" />
+        </form>
+        </div>
+        <div class="container">
+          <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body">
+                           <h3 style=" text-align: left;" id="data">
+                                    {% for item in data %}
+                                        <span>{{item}}</span><br>
+                                    {% endfor %}
+                
+                            </h3>
+            
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        
+
+    </div>
+
+
+
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
